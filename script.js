@@ -99,7 +99,11 @@ $(document).ready(function() {
                 }
             }
         });
-        $('#output').text(JSON.stringify(config, null, 2));
+        var configJSON = JSON.stringify(config, null, 2);
+        $('#output').html(configJSON.replace(/("accessKey":\s*")([^"]+)(")/, '$1<span class="spoiler">$2</span>$3'));
+        $('#output').on('click', '.spoiler', function() {
+            $(this).toggleClass('revealed');
+        });
         $('#exportConfig').prop('disabled', false);
     });
 

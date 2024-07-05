@@ -17,9 +17,23 @@
     height: calc(100vh - 120px);
     overflow-y: auto;
     margin-left: 1rem;
-    user-select: all;
-    -moz-user-select: all;
-    -webkit-user-select: all;
+}
+
+#output .spoiler {
+    background-color: #202020;
+    color: #202020;
+    cursor: pointer;
+    border-radius: 1px;
+    transition: opacity 0.2s ease-in-out, color 0.1s ease-in-out, background 0.1s ease-in-out;
+}
+
+#output .spoiler:hover {
+    opacity: 0.9;
+}
+
+#output .spoiler.revealed {
+    color: initial;
+    background-color: transparent;
 }
 
 @media (max-width: 768px) {
