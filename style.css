@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.form-container {
+    flex: 2;
+    min-width: 300px;
+    margin-right: 1rem;
+}
+
+.output-container {
+    flex: 1;
+    min-width: 400px;
+    position: sticky;
+    top: 3rem;
+    height: calc(100vh - 120px);
+    overflow-y: auto;
+    margin-left: 1rem;
+    user-select: all;
+    -moz-user-select: all;
+    -webkit-user-select: all;
+}
+
+@media (max-width: 768px) {
+    .container {
+        display: block;
+    }
+}
