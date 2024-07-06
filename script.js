@@ -22,6 +22,19 @@ $(document).ready(function() {
 
     $('#accessKey').val(generateKey(32));
 
+    $('#rotateAccessKey').click(function() {
+        $('#accessKey').val(generateKey(32));
+    });
+
+    $('#authWarningPrimary').click(function() {
+        $('#authWarning').modal('hide');
+        $('html, body').animate({
+            scrollTop: $('#accessKey').offset().top
+        }, 200, function() {
+            $('#accessKey').focus();
+        });
+    });
+
     $('#addBanner').click(function() {
         bannerCount++;
         const bannerHtml = `
@@ -84,6 +97,10 @@ $(document).ready(function() {
     });
 
     $('#generateConfig').click(function() {
+        if (!$('#accessKey').val().trim()) {
+            $('#authWarning').modal('show');
+            return;
+        }
         const config = {};
         $('#configForm').serializeArray().forEach(field => {
             const keys = field.name.match(/([^\[\]]+)/g);

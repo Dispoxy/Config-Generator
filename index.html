@@ -133,8 +133,11 @@
                 </div>
                 <div class="mb-3">
                     <label for="accessKey" class="form-label">Access Key</label>
-                    <input type="password" class="form-control" id="accessKey" name="accessKey" maxlength="64"
+                    <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="accessKey" name="accessKey" maxlength="64"
                         placeholder="Treat it like your password!" required>
+                        <button class="btn btn-outline-secondary" type="button" id="rotateAccessKey">Regenerate</button>
+                    </div>
                 </div>
 
                 <h3 class="mt-4">Screen Saver</h3>
@@ -197,6 +200,23 @@
             <span class="text-muted">&copy <script>document.write(new Date().getFullYear())</script> Dispoxy. All rights reserved.</span>
         </div>
     </footer>
+
+    <div class="modal fade" id="authWarning" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="authWarningLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="authWarningLabel">Security warning</h5>
+            </div>
+            <div class="modal-body">
+              You haven't entered an access key under <strong>Security Settings</strong>. This allows administrator access without authentication, meaning that anybody will be able to modify or reconfigure your kiosk.<br><br>You can generate a unique string to use as an access key and write it down, set your own memorable access key or proceed anyway without an access key.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Proceed anyway</button>
+              <button type="button" class="btn btn-primary" id="authWarningPrimary">Add access key</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
