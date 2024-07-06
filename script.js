@@ -7,6 +7,7 @@ $(document).ready(function() {
 
     let bannerCount = 0;
     let customPageCount = 0;
+    let ignoreAuthWarning = false;
 
     function generateKey(length) {
         const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -24,6 +25,11 @@ $(document).ready(function() {
 
     $('#rotateAccessKey').click(function() {
         $('#accessKey').val(generateKey(32));
+    });
+
+    $('#authWarningIgnore').click(function() {
+        ignoreAuthWarning = true;
+        $('#generateConfig').trigger('click');
     });
 
     $('#authWarningPrimary').click(function() {
@@ -97,7 +103,7 @@ $(document).ready(function() {
     });
 
     $('#generateConfig').click(function() {
-        if (!$('#accessKey').val().trim()) {
+        if (!$('#accessKey').val().trim() && !(ignoreAuthWarning)) {
             $('#authWarning').modal('show');
             return;
         }
