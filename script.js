@@ -21,7 +21,8 @@ $(document).ready(function() {
         return result;
     }
 
-    $('#accessKey').val(generateKey(32));
+    // Generate accessKey on load
+    // $('#accessKey').val(generateKey(32));
 
     $('#rotateAccessKey').click(function() {
         $('#accessKey').val(generateKey(32));
@@ -29,6 +30,7 @@ $(document).ready(function() {
 
     $('#authWarningIgnore').click(function() {
         ignoreAuthWarning = true;
+        console.log( "%c WARN %c authWarning dismissed for session.", "background: #f4ae36; color: black; padding: 2px 6px; border-radius: 12px; font-size: 12px; margin-right: 5px;", "font-size: 13px; color: white;" );
         $('#generateConfig').trigger('click');
     });
 
@@ -105,6 +107,7 @@ $(document).ready(function() {
     $('#generateConfig').click(function() {
         if (!$('#accessKey').val().trim() && !(ignoreAuthWarning)) {
             $('#authWarning').modal('show');
+            console.log( "%c WARN %c authWarning triggered due to empty access key.", "background: #f4ae36; color: black; padding: 2px 6px; border-radius: 12px; font-size: 12px; margin-right: 5px;", "font-size: 13px; color: white;" );
             return;
         }
         const config = {};
@@ -141,6 +144,7 @@ $(document).ready(function() {
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
+            console.log( "%c LOCAL %c Kiosk server config exported.", "background: #364cf4; color: white; padding: 2px 6px; border-radius: 12px; font-size: 12px; margin-right: 5px;", "font-size: 13px; color: white;" );
         } else {
             $('#exportConfig').prop('disabled', true);
         }
